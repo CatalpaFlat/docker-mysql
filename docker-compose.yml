@@ -1,0 +1,25 @@
+version: '2'
+services:
+  mysql-dev:
+    restart: always
+    build:
+      context:
+    container_name: mysql-dev
+    volumes:
+      - /home/catalpaflat/data/mysql-dev:/var/lib/mysql
+    ports:
+      - 3306:3306
+  mysql-stage:
+    restart: always
+    image: registry.cn-shenzhen.aliyuncs.com/dankal/mysql
+    container_name: mysql-stage
+    volumes:
+      - /home/deploy/data/mysql-stage:/var/lib/mysql
+    ports:
+      - 3307:3306
+  mysql-prod:
+    restart: always
+    image: registry.cn-shenzhen.aliyuncs.com/dankal/mysql
+    container_name: mysql-prod
+    volumes:
+      - /home/deploy/data/mysql-prod:/var/lib/mysql

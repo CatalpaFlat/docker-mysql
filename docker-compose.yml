@@ -3,7 +3,7 @@ services:
   mysql-dev:
     restart: always
     build:
-      context:
+      context: https://github.com/CatalpaFlat/docker-mysql/blob/master/Dockerfile
     container_name: mysql-dev
     volumes:
       - /home/catalpaflat/data/mysql-dev:/var/lib/mysql
@@ -11,15 +11,19 @@ services:
       - 3306:3306
   mysql-stage:
     restart: always
-    image: registry.cn-shenzhen.aliyuncs.com/dankal/mysql
+    build:
+      context: https://github.com/CatalpaFlat/docker-mysql/blob/master/Dockerfile
     container_name: mysql-stage
     volumes:
-      - /home/deploy/data/mysql-stage:/var/lib/mysql
+      - /home/catalpaflat/data/mysql-stage:/var/lib/mysql
     ports:
       - 3307:3306
   mysql-prod:
     restart: always
-    image: registry.cn-shenzhen.aliyuncs.com/dankal/mysql
+    build:
+      context: https://github.com/CatalpaFlat/docker-mysql/blob/master/Dockerfile
     container_name: mysql-prod
     volumes:
-      - /home/deploy/data/mysql-prod:/var/lib/mysql
+      - /home/catalpaflat/data/mysql-prod:/var/lib/mysql
+    ports:
+      - 3308:3306
